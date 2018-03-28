@@ -28,3 +28,11 @@ func ShuffleIntInt(slice [][]int) {
 		slice[i], slice[j] = slice[j], slice[i]
 	}
 }
+
+// ShuffleInt randomly permutates a slice of int
+func ShuffleInt(slice []int) {
+	for i := range slice {
+		j := rand.Intn(i + 1)
+		slice[i], slice[j] = slice[j], slice[i]
+	}
+}

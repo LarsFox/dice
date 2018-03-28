@@ -22,9 +22,9 @@ func main() {
 		}
 	}
 
-	pairs := make([][]int, 0, number*loop)
+	products := make([][]int, 0, number*loop)
 	for i := 0; i < loop; i++ {
-		pairs = append(pairs, iter.Product(6, number)...)
+		products = append(products, iter.Product(6, number)...)
 	}
 
 	fmt.Println("\nOk, let’s roll some dices!\n\n(Type in anything to exit.)")
@@ -33,10 +33,11 @@ func main() {
 	var i int
 	for enough == "" {
 		rand.Seed(time.Now().UnixNano())
-		iter.ShuffleIntInt(pairs)
+		iter.ShuffleIntInt(products)
 
-		for _, pair := range pairs {
-			dices, _ := art.Dices(pair...)
+		for _, product := range products {
+			iter.ShuffleInt(product)
+			dices, _ := art.Dices(product...)
 			fmt.Println(dices)
 
 			fmt.Scanln(&enough)
