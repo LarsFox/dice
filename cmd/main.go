@@ -12,7 +12,7 @@ import (
 const loop = 3
 
 func main() {
-	fmt.Println("Yo! Type in a number of dices to roll, but no more than 6.")
+	fmt.Println("Yo! Type in a number of dice to roll, but no more than 6.")
 
 	var number int
 	for number == 0 {
@@ -27,7 +27,7 @@ func main() {
 		products = append(products, iter.Product(6, number)...)
 	}
 
-	fmt.Println("\nOk, let’s roll some dices!\n\n(Type in anything to exit.)")
+	fmt.Println("\nOk, let’s roll some dice!\n\n(Type in anything to exit.)")
 
 	var enough string
 	var i int
@@ -37,8 +37,8 @@ func main() {
 
 		for _, product := range products {
 			iter.ShuffleInt(product)
-			dices, _ := art.Dices(product...)
-			fmt.Println(dices)
+			dice, _ := art.Dice(product...)
+			fmt.Println(dice)
 
 			fmt.Scanln(&enough)
 			if enough != "" {

@@ -37,14 +37,11 @@ Second sequence:
 
 ## Compilation
 
-Windows
-`env GOOS=windows GOARCH=amd64 go build`
+Linux: `make linux`
 
-Mac
-`env GOOS=darwin GOARCH=amd64 go build`
+Mac: `make mac`
 
-Linux
-`env GOOS=linux GOARCH=amd64 go build`
+Windows: `make windows`
 
 ## Bugs
 
