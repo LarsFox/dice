@@ -2,7 +2,7 @@ package iter
 
 import "math/rand"
 
-// Product returns a cartesian product of k from 0 to n
+// Product returns a cartesian product of k from 0 to n.
 func Product(n, k int) [][]int {
 	result := make([][]int, 0, n^k)
 	ix := make([]int, k)
@@ -21,7 +21,7 @@ func Product(n, k int) [][]int {
 	}
 }
 
-// ShuffleIntInt randomly permutates a slice of slices of int
+// ShuffleIntInt randomly permutates a slice of slices of int.
 func ShuffleIntInt(slice [][]int) {
 	for i := range slice {
 		j := rand.Intn(i + 1)
@@ -29,7 +29,7 @@ func ShuffleIntInt(slice [][]int) {
 	}
 }
 
-// ShuffleInt randomly permutates a slice of int
+// ShuffleInt randomly permutates a slice of int.
 func ShuffleInt(slice []int) {
 	for i := range slice {
 		j := rand.Intn(i + 1)

@@ -9,7 +9,10 @@ import (
 	"github.com/LarsFox/dice/iter"
 )
 
-const loop = 3
+const (
+	loop  = 3
+	limit = 6
+)
 
 func main() {
 	fmt.Println("Yo! Type in a number of dice to roll, but no more than 6.")
@@ -17,14 +20,14 @@ func main() {
 	var number int
 	for number == 0 {
 		fmt.Scan(&number)
-		if number > 6 {
+		if number > limit {
 			number = 0
 		}
 	}
 
 	products := make([][]int, 0, number*loop)
 	for i := 0; i < loop; i++ {
-		products = append(products, iter.Product(6, number)...)
+		products = append(products, iter.Product(limit, number)...)
 	}
 
 	fmt.Println("\nOk, let’s roll some dice!\n\n(Type in anything to exit.)")
