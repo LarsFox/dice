@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 
 	"github.com/LarsFox/dice/art"
 	"github.com/LarsFox/dice/iter"
 )
 
 const (
+	die   = 6
 	loop  = 3
 	limit = 6
 )
@@ -25,22 +24,14 @@ func main() {
 		}
 	}
 
-	products := make([][]int, 0, number*loop)
-	for i := 0; i < loop; i++ {
-		products = append(products, iter.Product(limit, number)...)
-	}
-
 	fmt.Println("\nOk, let’s roll some dice!\n\n(Type in anything to exit.)")
 
-	var enough string
 	var i int
+	var enough string
 	for enough == "" {
-		rand.Seed(time.Now().UnixNano())
-		iter.ShuffleIntInt(products)
-
-		for _, product := range products {
-			iter.ShuffleInt(product)
-			dice, _ := art.Dice(product...)
+		seq := iter.Sequence(die, number, loop)
+		for _, perm := range seq {
+			dice, _ := art.Dice(perm...)
 			fmt.Println(dice)
 
 			fmt.Scanln(&enough)
