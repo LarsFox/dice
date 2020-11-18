@@ -8,6 +8,14 @@ output:
   print-issued-lines: true
   print-linter-name: true
 
+# crypto/rand vs math/rand is no difference here.
+issues:
+  exclude-rules:
+    - path: iter/
+      text: "weak random"
+      linters:
+        gosec
+
 linters:
   enable-all: true
   disable:
@@ -15,5 +23,6 @@ linters:
     - gochecknoglobals
     - lll
     - maligned
+    - nlreturn
     - wsl
   fast: false

@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 
 	"github.com/LarsFox/dice/art"
 	"github.com/LarsFox/dice/iter"
@@ -27,21 +29,22 @@ func main() {
 	fmt.Println("\nOk, let’s roll some dice!\n\n(Type in anything to exit.)")
 
 	var i int
-	var enough string
-	for enough == "" {
+	var enough bool
+	scanner := bufio.NewScanner(os.Stdin)
+	for !enough {
 		seq := iter.Sequence(die, number, loop)
 		for _, perm := range seq {
 			dice, _ := art.Dice(perm...)
 			fmt.Println(dice)
-
-			fmt.Scanln(&enough)
-			if enough != "" {
-				break
-			}
 			i++
+
+			if scanner.Scan() {
+				if enough = scanner.Text() != ""; enough {
+					break
+				}
+			}
 		}
 	}
 
-	fmt.Printf("\nTotal rolls: %d!\n\nNice rolling!\n", i+1)
-	fmt.Scanln(&enough)
+	fmt.Printf("\nTotal rolls: %d!\n\nHave a nice day!\n", i+1)
 }

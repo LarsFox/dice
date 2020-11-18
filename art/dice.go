@@ -1,7 +1,7 @@
 package art
 
 import (
-	"fmt"
+	"errors"
 	"strings"
 )
 
@@ -73,10 +73,7 @@ const (
     \________\/   `
 )
 
-const (
-	// NL is a new line
-	NL = "\n"
-)
+const nl = "\n"
 
 var (
 	// dice is a map of dice ASCII images.
@@ -90,7 +87,10 @@ var (
 	}
 
 	// number of lines in one dice image.
-	asciiLength = len(strings.Split(one, NL))
+	asciiLength = len(strings.Split(one, nl))
+
+	// ErrInvalidNum is returned when there is no art for the die.
+	ErrInvalidNum = errors.New("invalid number")
 )
 
 // Dice returns a wide ASCII image of all the dice.
@@ -99,12 +99,12 @@ func Dice(nums ...int) (string, error) {
 	for _, num := range nums {
 		dice, ok := dice[num]
 		if !ok {
-			return "", fmt.Errorf("wrong dice number: %d", num)
+			return "", ErrInvalidNum
 		}
 
-		for i, line := range strings.Split(dice, NL) {
+		for i, line := range strings.Split(dice, nl) {
 			total[i] += " " + line
 		}
 	}
-	return strings.Join(total, NL), nil
+	return strings.Join(total, nl), nil
 }

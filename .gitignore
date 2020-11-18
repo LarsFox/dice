@@ -1,4 +1,5 @@
 .vscode
 .tmp
 
-build/*
+dice
+dice.exe
