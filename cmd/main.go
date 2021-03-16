@@ -26,7 +26,9 @@ func main() {
 		}
 	}
 
-	fmt.Println("\nOk, let’s roll some dice!\n\n(Type in anything to exit.)")
+	fmt.Println("\nOk, let’s roll some dice by hitting Enter!\n\n(Type in anything to exit.)")
+
+	fmt.Scanln()
 
 	var i int
 	var enough bool
